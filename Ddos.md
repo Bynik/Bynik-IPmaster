@@ -2,8 +2,8 @@
 # -*- coding: utf-8 -*-
 import urllib.request
 import sys
-from scapy.all import * #отличная либа
-# Импортируем либы
+from scapy.all import * 
+
 import socket
 import socks
 import argparse
